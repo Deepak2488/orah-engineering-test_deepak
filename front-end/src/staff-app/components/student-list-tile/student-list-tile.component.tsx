@@ -4,13 +4,18 @@ import { Spacing, BorderRadius, FontWeight } from "shared/styles/styles"
 import { Images } from "assets/images"
 import { Colors } from "shared/styles/colors"
 import { Person, PersonHelper } from "shared/models/person"
+import {rollcount} from "shared/models/rollcount"
 import { RollStateSwitcher } from "staff-app/components/roll-state/roll-state-switcher.component"
 
 interface Props {
+  id: number
   isRollMode?: boolean
-  student: Person
+  dataState?: { students: Person[] }
+  student: Person,
+  count?: rollcount[]
+  ChangeCount?: (a: any) => void
 }
-export const StudentListTile: React.FC<Props> = ({ isRollMode, student }) => {
+export const StudentListTile: React.FC<Props> = ({ id, isRollMode, dataState, student, count, ChangeCount }) => {
   return (
     <S.Container>
       <S.Avatar url={Images.avatar}></S.Avatar>
@@ -19,7 +24,7 @@ export const StudentListTile: React.FC<Props> = ({ isRollMode, student }) => {
       </S.Content>
       {isRollMode && (
         <S.Roll>
-          <RollStateSwitcher />
+          <RollStateSwitcher id={id} status={student?.status} dataState={dataState} rollcounts={count} onChangeCount={ChangeCount}/>
         </S.Roll>
       )}
     </S.Container>

@@ -7,13 +7,14 @@ import { RolllStateType } from "shared/models/roll"
 
 interface Props {
   type: RolllStateType
+  status?: RolllStateType
   size?: number
   onClick?: () => void
 }
 export const RollStateIcon: React.FC<Props> = (props) => {
-  const { type, size = 20, onClick } = props
+  const { type, status, size = 20, onClick } = props
   return (
-    <S.Icon size={size} border={type === "unmark"} bgColor={getBgColor(type)} clickable={Boolean(onClick)} onClick={onClick}>
+    <S.Icon size={size} border={type === "unmark"} bgColor={status? getBgColor(status): getBgColor(type)} clickable={Boolean(onClick)} onClick={onClick}>
       <FontAwesomeIcon icon="check" size={size > 14 ? "lg" : "sm"} />
     </S.Icon>
   )

@@ -34,7 +34,6 @@ export function useApi<ReturnType = {}>({ url, initialLoadState = "loading" }: O
     },
     [url]
   )
-
   return [callApi, state.data, state.loadState, state.error] as const
 }
 
