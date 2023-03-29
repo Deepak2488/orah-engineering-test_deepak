@@ -51,7 +51,6 @@ export const HomeBoardPage: React.FC = () => {
     const newarr = [
       data?.students?.sort((a, b) => (a.first_name.toLowerCase() > b.first_name.toLowerCase() ? 1 : b.first_name.toLowerCase() > a.first_name.toLowerCase() ? -1 : 0)),
     ]
-    //console.log(newarr)
     newarr.pop()
     setSortData(newarr)
   }
@@ -59,7 +58,6 @@ export const HomeBoardPage: React.FC = () => {
   const getDescData = async () => {
     // sort by desc
     const newarr = [data?.students?.sort((a, b) => (a.last_name.toLowerCase() > b.last_name.toLowerCase() ? -1 : b.last_name.toLowerCase() > a.last_name.toLowerCase() ? 1 : 0))]
-    //console.log(newarr);
     newarr.pop()
     setSortData(newarr)
   }
